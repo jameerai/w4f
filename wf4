@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ReactJS Basics</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Part (a): Render HTML without JSX
+        const plainHTML = React.createElement(
+            'h2',
+            null,
+            'Hello without JSX!'
+        );
+
+        // Part (b): JSX expressions and inline styles
+        const userName = 'React Developer';
+        const today = new Date().toDateString();
+
+        // Function component
+        function Greeting(props) {
+            return <h3>Hello, {props.name}!</h3>;
+        }
+
+        // Class component
+        class WelcomeMessage extends React.Component {
+            render() {
+                return (
+                    <h3 style={{ color: 'green' }}>
+                        React is awesome!
+                    </h3>
+                );
+            }
+        }
+
+        // Main App component
+        function App() {
+            return (
+                <div style={{
+                    fontFamily: 'Arial',
+                    padding: '20px'
+                }}>
+                    <h1>Hello from React!</h1>
+
+                    {plainHTML}
+
+                    <p>Welcome, {userName}!</p>
+                    <p>Today is {today}</p>
+                    <p>2 + 2 = {2 + 2}</p>
+
+                    <Greeting name="Alice" />
+                    <Greeting name="Bob" />
+
+                    <WelcomeMessage />
+                </div>
+            );
+        }
+
+        // Render the application using React 18
+        const root = ReactDOM.createRoot(
+            document.getElementById('root')
+        );
+
+        root.render(<App />);
+    </script>
+</body>
+</html>
